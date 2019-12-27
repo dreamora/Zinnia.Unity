@@ -1,5 +1,81 @@
 # Changelog
 
+### [1.10.4](https://github.com/ExtendRealityLtd/Zinnia.Unity/compare/v1.10.3...v1.10.4) (2019-12-21)
+
+#### Miscellaneous Chores
+
+* **deps:** bump io.extendreality.malimbe from 9.6.4 to 9.6.5 ([2a8ba92](https://github.com/ExtendRealityLtd/Zinnia.Unity/commit/2a8ba92a14b9b8b7b1e4a4ad86b18b16a324ab3b))
+  > Bumps [io.extendreality.malimbe](https://github.com/ExtendRealityLtd/Malimbe) from 9.6.4 to 9.6.5. - [Release notes](https://github.com/ExtendRealityLtd/Malimbe/releases) - [Changelog](https://github.com/ExtendRealityLtd/Malimbe/blob/master/CHANGELOG.md) - [Commits](https://github.com/ExtendRealityLtd/Malimbe/compare/v9.6.4...v9.6.5)
+  > 
+  > Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+
+### [1.10.3](https://github.com/ExtendRealityLtd/Zinnia.Unity/compare/v1.10.2...v1.10.3) (2019-12-21)
+
+#### Miscellaneous Chores
+
+* **deps:** use latest pipeline templates ([abcaccd](https://github.com/ExtendRealityLtd/Zinnia.Unity/commit/abcaccd551f29eff7a8505fb50871533efc02bf4))
+
+### [1.10.2](https://github.com/ExtendRealityLtd/Zinnia.Unity/compare/v1.10.1...v1.10.2) (2019-12-21)
+
+#### Miscellaneous Chores
+
+* **deps:** bump io.extendreality.malimbe from 9.6.3 to 9.6.4 ([a66df76](https://github.com/ExtendRealityLtd/Zinnia.Unity/commit/a66df76d820ab2142b54a43fc2b989aa75bf2556))
+  > Bumps [io.extendreality.malimbe](https://github.com/ExtendRealityLtd/Malimbe) from 9.6.3 to 9.6.4. - [Release notes](https://github.com/ExtendRealityLtd/Malimbe/releases) - [Changelog](https://github.com/ExtendRealityLtd/Malimbe/blob/master/CHANGELOG.md) - [Commits](https://github.com/ExtendRealityLtd/Malimbe/compare/v9.6.3...v9.6.4)
+  > 
+  > Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+
+### [1.10.1](https://github.com/ExtendRealityLtd/Zinnia.Unity/compare/v1.10.0...v1.10.1) (2019-12-17)
+
+#### Bug Fixes
+
+* **Rule:** allow StringInListRule to work in Unity 2018.3 ([2d3c71b](https://github.com/ExtendRealityLtd/Zinnia.Unity/commit/2d3c71ba00a0365f8004549c8aec2fbce9354da2))
+  > The TryGetComponent method being used was not valid in 2018.3 and must have been introduced in 2019.1.
+  > 
+  > The fix is to fallback to using the Zinnia.Extension version of the TryGetComponent method.
+
+## [1.10.0](https://github.com/ExtendRealityLtd/Zinnia.Unity/compare/v1.9.0...v1.10.0) (2019-12-17)
+
+#### Features
+
+* **Rule:** add rule to check if a string pattern is in a string list ([802e0be](https://github.com/ExtendRealityLtd/Zinnia.Unity/commit/802e0bef0f4abb002a1b6a7294b98ec139c84ef9))
+  > The StringInListRule allows a string pattern to be specified to match against any string found in an associated String Observable List that is a component on the given GameObject.
+  > 
+  > This can replace the need to use the AnyComponentTypeRule and creating dummy scripts for tags as the string list can be used as the tag name that is then picked up by the rule.
+
+#### Bug Fixes
+
+* **Process:** delete GameObject containter from composite process test ([fcc2c7d](https://github.com/ExtendRealityLtd/Zinnia.Unity/commit/fcc2c7dabea374d24e9f10d9aebb67d06eea5ef8))
+  > The CompositeProcessTest was creating a GameObject contianier in one of the tests but not deleting it at the end of the test so it was present until all of the tests had run.
+  > 
+  > This can cause tests to behave incorrectly, so it has been removed.
+
+## [1.9.0](https://github.com/ExtendRealityLtd/Zinnia.Unity/compare/v1.8.2...v1.9.0) (2019-12-02)
+
+#### Features
+
+* **ObjectPointer:** option to disable destination on no collision ([0eec665](https://github.com/ExtendRealityLtd/Zinnia.Unity/commit/0eec66507fe50698ab576cc9360981353899df7d))
+  > The ObjectPointer can now disable the destination pointer element if there is no collision data from the RayCast.
+  > 
+  > Also, the ObjectPointer test was incorrect as the pointer elements were set up incorrectly where the container was assigned to the mesh and vice versa. This has now been corrected and the tests updated to reflect this change.
+
+### [1.8.2](https://github.com/ExtendRealityLtd/Zinnia.Unity/compare/v1.8.1...v1.8.2) (2019-12-02)
+
+#### Miscellaneous Chores
+
+* **deps:** bump io.extendreality.malimbe from 9.6.2 to 9.6.3 ([b9a3195](https://github.com/ExtendRealityLtd/Zinnia.Unity/commit/b9a3195c22a90510ab86ede88c461811fb6543a0))
+  > Bumps [io.extendreality.malimbe](https://github.com/ExtendRealityLtd/Malimbe) from 9.6.2 to 9.6.3. - [Release notes](https://github.com/ExtendRealityLtd/Malimbe/releases) - [Changelog](https://github.com/ExtendRealityLtd/Malimbe/blob/master/CHANGELOG.md) - [Commits](https://github.com/ExtendRealityLtd/Malimbe/compare/v9.6.2...v9.6.3)
+  > 
+  > Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+
+### [1.8.1](https://github.com/ExtendRealityLtd/Zinnia.Unity/compare/v1.8.0...v1.8.1) (2019-11-27)
+
+#### Miscellaneous Chores
+
+* **deps:** bump io.extendreality.malimbe from 9.6.1 to 9.6.2 ([b51db65](https://github.com/ExtendRealityLtd/Zinnia.Unity/commit/b51db65b92af6e3aa0273c4b94f1d7ee27e35f47))
+  > Bumps [io.extendreality.malimbe](https://github.com/ExtendRealityLtd/Malimbe) from 9.6.1 to 9.6.2. - [Release notes](https://github.com/ExtendRealityLtd/Malimbe/releases) - [Changelog](https://github.com/ExtendRealityLtd/Malimbe/blob/master/CHANGELOG.md) - [Commits](https://github.com/ExtendRealityLtd/Malimbe/compare/v9.6.1...v9.6.2)
+  > 
+  > Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+
 ## [1.8.0](https://github.com/ExtendRealityLtd/Zinnia.Unity/compare/v1.7.0...v1.8.0) (2019-11-07)
 
 #### Features
