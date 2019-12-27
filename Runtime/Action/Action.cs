@@ -32,13 +32,13 @@
         /// Adds a given action to the sources collection.
         /// </summary>
         /// <param name="action">The action to add.</param>
-        void AddSource(Action action);
+        void AddSource(IAction action);
 
         /// <summary>
         /// Removes the given action from the sources collection.
         /// </summary>
         /// <param name="action">The action to remove.</param>
-        void RemoveSource(Action action);
+        void RemoveSource(IAction action);
 
         /// <summary>
         /// Clears all sources.
@@ -92,12 +92,12 @@
         /// Adds a given action to the sources collection.
         /// </summary>
         /// <param name="action">The action to add.</param>
-        public abstract void AddSource(Action action);
+        public abstract void AddSource(IAction action);
         /// <summary>
         /// Removes the given action from the sources collection.
         /// </summary>
         /// <param name="action">The action to remove.</param>
-        public abstract void RemoveSource(Action action);
+        public abstract void RemoveSource(IAction action);
         /// <summary>
         /// Clears all sources.
         /// </summary>
@@ -165,20 +165,20 @@
 
         /// <inheritdoc />
         [RequiresBehaviourState]
-        public override void AddSource(Action action)
+        public override void AddSource(IAction action)
         {
             if (action == null)
             {
                 return;
             }
-
+            
             Sources.Add((TSelf)action);
             SubscribeToSource((TSelf)action);
         }
 
         /// <inheritdoc />
         [RequiresBehaviourState]
-        public override void RemoveSource(Action action)
+        public override void RemoveSource(IAction action)
         {
             if (action == null)
             {

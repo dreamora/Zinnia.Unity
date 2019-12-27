@@ -47,7 +47,7 @@
             Actions.Added.AddListener(OnActionAdded);
             Actions.Removed.AddListener(OnActionRemoved);
 
-            foreach (Action action in Actions.SubscribableElements)
+            foreach (IAction action in Actions.SubscribableElements)
             {
                 action.ActivationStateChanged.AddListener(OnActionActivationStateChanged);
             }
@@ -61,7 +61,7 @@
             Actions.Added.RemoveListener(OnActionAdded);
             Actions.Removed.RemoveListener(OnActionRemoved);
 
-            foreach (Action action in Actions.SubscribableElements)
+            foreach (IAction action in Actions.SubscribableElements)
             {
                 if (action != null)
                 {
@@ -86,7 +86,7 @@
             }
 
             bool areAllActionsActivated = DefaultValue;
-            foreach (Action action in Actions.SubscribableElements)
+            foreach (IAction action in Actions.SubscribableElements)
             {
                 if (action.IsActivated)
                 {
@@ -123,7 +123,7 @@
         /// </summary>
         /// <param name="action">The element added to the collection.</param>
         [RequiresBehaviourState]
-        protected virtual void OnActionAdded(Action action)
+        protected virtual void OnActionAdded(IAction action)
         {
             if (action == null)
             {
@@ -139,7 +139,7 @@
         /// </summary>
         /// <param name="action">The element removed from the collection.</param>
         [RequiresBehaviourState]
-        protected virtual void OnActionRemoved(Action action)
+        protected virtual void OnActionRemoved(IAction action)
         {
             if (action != null)
             {
