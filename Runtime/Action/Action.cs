@@ -11,21 +11,63 @@
     using Zinnia.Data.Type;
 
     /// <summary>
-    /// The basis for all action types.
+    /// Defines the event with the <see cref="bool"/>.
     /// </summary>
-    public abstract class Action : MonoBehaviour
-    {
-        /// <summary>
-        /// Defines the event with the <see cref="bool"/>.
-        /// </summary>
-        [Serializable]
-        public class BooleanUnityEvent : UnityEvent<bool> { }
+    [Serializable]
+    public class BooleanUnityEvent : UnityEvent<bool> { }
 
+    public interface IAction
+    {
         /// <summary>
         /// Emitted when <see cref="IsActivated"/> changes.
         /// </summary>
-        [DocumentedByXml]
-        public BooleanUnityEvent ActivationStateChanged = new BooleanUnityEvent();
+        BooleanUnityEvent ActivationStateChanged { get; }
+
+        /// <summary>
+        /// Whether the action is currently activated.
+        /// </summary>
+        bool IsActivated { get; }
+
+        /// <summary>
+        /// Adds a given action to the sources collection.
+        /// </summary>
+        /// <param name="action">The action to add.</param>
+        void AddSource(Action action);
+
+        /// <summary>
+        /// Removes the given action from the sources collection.
+        /// </summary>
+        /// <param name="action">The action to remove.</param>
+        void RemoveSource(Action action);
+
+        /// <summary>
+        /// Clears all sources.
+        /// </summary>
+        void ClearSources();
+
+        /// <summary>
+        /// Emits the appropriate event for when the activation state changes from Activated or Deactivated.
+        /// </summary>
+        void EmitActivationState();
+
+        /// <summary>
+        /// Whether the event should be emitted.
+        /// </summary>
+        /// <returns><see langword="true"/> if the event should be emitted.</returns>
+        bool CanEmit();
+    }
+
+    /// <summary>
+    /// The basis for all action types.
+    /// </summary>
+    public abstract class Action : MonoBehaviour, IAction
+    {
+        /// <summary>
+        /// Emitted when <see cref="IsActivated"/> changes.
+        /// </summary>
+        [Serialized]
+        [field: DocumentedByXml]
+        public BooleanUnityEvent ActivationStateChanged { get; } = new BooleanUnityEvent();
 
         /// <summary>
         /// Whether the action is currently activated.
@@ -69,7 +111,7 @@
         /// Whether the event should be emitted.
         /// </summary>
         /// <returns><see langword="true"/> if the event should be emitted.</returns>
-        protected virtual bool CanEmit()
+        public virtual bool CanEmit()
         {
             return isActiveAndEnabled;
         }
