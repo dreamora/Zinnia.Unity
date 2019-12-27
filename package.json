@@ -1,5 +1,5 @@
 {
-    "name": "io.extendreality.zinnia.unity",
+    "name": "ch.dreamora.zinnia.unity",
     "displayName": "Zinnia.Unity",
     "description": "A collection of design patterns for the Unity software that can be beneficial in (but not limited to) spatial computing development.",
     "version": "1.10.4",
@@ -13,20 +13,29 @@
         "ar",
         "mr"
     ],
-    "homepage": "https://github.com/ExtendRealityLtd/Zinnia.Unity/",
+    "homepage": "https://github.com/dreamora/Zinnia.Unity/",
     "bugs": {
-        "url": "https://github.com/ExtendRealityLtd/Zinnia.Unity/issues"
+        "url": "https://github.com/dreamora/Zinnia.Unity/issues"
     },
     "repository": {
         "type": "git",
-        "url": "ssh://git@github.com/ExtendRealityLtd/Zinnia.Unity.git"
+        "url": "ssh://git@github.com/dreamora/Zinnia.Unity.git"
     },
     "license": "MIT",
     "author": {
-        "name": "Extend Reality Ltd",
-        "email": "hello@extendreality.io",
-        "url": "https://github.com/ExtendRealityLtd"
+        "name": "Marc Schaerer",
+        "email": "hello@dreamora.ch",
+        "url": "https://github.com/dreamora"
     },
+    "scopedRegistries": [
+      {
+        "name": "npmjs",
+        "url": "https://registry.npmjs.org/",
+        "scopes": [
+          "io.extendreality"
+        ]
+      }
+    ],
     "dependencies": {
         "io.extendreality.malimbe": "9.6.5"
     },
