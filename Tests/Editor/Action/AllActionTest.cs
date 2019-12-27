@@ -131,6 +131,55 @@ namespace Test.Zinnia.Action
             Assert.IsTrue(deactivatedListenerMock.Received);
             Assert.IsTrue(changedListenerMock.Received);
         }
+        
+        [Test]
+        public void SignalChangedEmitted()
+        {
+            MockActionSignal actionA = ScriptableObject.CreateInstance<MockActionSignal>();
+            MockActionSignal actionB = ScriptableObject.CreateInstance<MockActionSignal>();
+
+            actionA.SetIsActivated(false);
+            actionB.SetIsActivated(false);
+
+            subject.Actions.Add(actionA);
+            subject.Actions.Add(actionB);
+
+            UnityEventListenerMock changedListenerMock = new UnityEventListenerMock();
+
+            subject.ValueChanged.AddListener(changedListenerMock.Listen);
+
+            Assert.IsFalse(changedListenerMock.Received);
+
+            actionA.SetIsActivated(true);
+            actionB.SetIsActivated(true);
+
+            Assert.IsTrue(changedListenerMock.Received);
+            changedListenerMock.Reset();
+
+            actionA.SetIsActivated(false);
+            actionB.SetIsActivated(true);
+
+            Assert.IsTrue(changedListenerMock.Received);
+            changedListenerMock.Reset();
+
+            actionA.SetIsActivated(false);
+            actionB.SetIsActivated(false);
+
+            Assert.IsFalse(changedListenerMock.Received);
+            changedListenerMock.Reset();
+
+            actionA.SetIsActivated(true);
+            actionB.SetIsActivated(false);
+
+            Assert.IsFalse(changedListenerMock.Received);
+            changedListenerMock.Reset();
+
+            actionA.SetIsActivated(true);
+            actionB.SetIsActivated(true);
+
+            Assert.IsTrue(changedListenerMock.Received);
+        }
+
 
         [Test]
         public void ChangedEmitted()
@@ -284,11 +333,27 @@ namespace Test.Zinnia.Action
 
     public class MockAction : ZinniaAction.Action
     {
-        public override void AddSource(ZinniaAction.Action action) { }
+        public override void AddSource(ZinniaAction.IAction action) { }
 
         public override void ClearSources() { }
 
-        public override void RemoveSource(ZinniaAction.Action action) { }
+        public override void RemoveSource(ZinniaAction.IAction action) { }
+
+        public override void EmitActivationState() { }
+
+        public virtual void SetIsActivated(bool value)
+        {
+            IsActivated = value;
+        }
+    }
+
+    public class MockActionSignal : ZinniaAction.ActionSignal
+    {
+        public override void AddSource(ZinniaAction.IAction action) { }
+
+        public override void ClearSources() { }
+
+        public override void RemoveSource(ZinniaAction.IAction action) { }
 
         public override void EmitActivationState() { }
 
